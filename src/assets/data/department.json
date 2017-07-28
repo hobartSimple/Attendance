@@ -1,0 +1,33 @@
+[{
+  "_id": "1",
+  "name": "张三",
+  "workType": "2",
+  "toWork": "8:38",
+  "offWork": "18:52",
+  "attendance": "正常",
+  "remark": "000"
+}, {
+  "_id": "2",
+  "name": "李四",
+  "workType": "1",
+  "toWork": "8:38",
+  "offWork": "18:52",
+  "attendance": "正常",
+  "remark": "000"
+}, {
+  "_id": "3",
+  "name": "王五",
+  "workType": "2",
+  "toWork": "8:38",
+  "offWork": "18:52",
+  "attendance": "正常",
+  "remark": "000"
+}, {
+  "_id": "4",
+  "name": "赵六",
+  "workType": "1",
+  "toWork": "8:38",
+  "offWork": "18:52",
+  "attendance": "正常",
+  "remark": "000"
+}]
