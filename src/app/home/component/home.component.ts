@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+
+//import { HomeService } from './../service/home.service';
+import { ToastComponent } from './../../shared/toast/toast.component';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +11,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  
+  //cat = [];
   isLoading = true;
-  
-  constructor() { }
+
+  constructor(private http: Http,
+             // private homeService: HomeService,
+              public toast: ToastComponent,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit() {
   }
