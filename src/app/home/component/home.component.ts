@@ -14,13 +14,20 @@ import { Department } from './../model/department.model';
 })
 export class HomeComponent implements OnInit {
 
-  deps: Department[];
+  deps = [];
   isLoading = true;
 
   dep = {};
   isEditing = false;
 
-  addCatForm: FormGroup;
+  name = new FormControl('', Validators.required);
+  workType = new FormControl('', Validators.required);
+  toWork = new FormControl('', Validators.required);
+  offWork = new FormControl('', Validators.required);
+  attendance = new FormControl('', Validators.required);
+  remark = new FormControl('', Validators.required);
+
+  addDepartmentForm: FormGroup;
 
   constructor(private http: Http,
               private homeService: HomeService,
@@ -30,10 +37,13 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.getAllDeps();
 
-    this.addCatForm = this.formBuilder.group({
+    this.addDepartmentForm = this.formBuilder.group({
       name: this.name,
-      age: this.age,
-      weight: this.weight
+      workType: this.workType,
+      toWork: this.toWork,
+      offWork: this.offWork,
+      attendance: this.attendance,
+      remark: this.remark
     });
   }
 
