@@ -11,7 +11,7 @@ import { ToastComponent } from './../../shared/toast/toast.component';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  //cat = [];
+
   isLoading = true;
 
   constructor(private http: Http,
