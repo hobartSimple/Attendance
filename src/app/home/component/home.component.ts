@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   isEditing = false;
 
   name = new FormControl('', Validators.required);
+  classType = new FormControl('', Validators.required);
   workType = new FormControl('', Validators.required);
   toWork = new FormControl('', Validators.required);
   offWork = new FormControl('', Validators.required);
@@ -39,6 +40,7 @@ export class HomeComponent implements OnInit {
 
     this.addDepartmentForm = this.formBuilder.group({
       name: this.name,
+      classType: this.classType,
       workType: this.workType,
       toWork: this.toWork,
       offWork: this.offWork,
