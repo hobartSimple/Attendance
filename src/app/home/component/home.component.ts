@@ -56,4 +56,16 @@ export class HomeComponent implements OnInit {
       () => this.isLoading = false
     );
   }
+
+  addDep(){
+    this.homeService.addDep(this.addDepartmentForm.value).subscribe(
+      res => {
+        const newDep = res.json();
+        this.deps.push(newDep);
+        this.addDepartmentForm.reset();
+        this.toast.setMessage('Cat Added Successfully.', 'success');
+      },
+      error => console.log(error)
+    );
+  }
 }

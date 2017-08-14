@@ -6,40 +6,41 @@
 </div>
 <app-toast [message]="toast.message"></app-toast>
 
-<div class="card card-warning" *ngIf="!isLoading">
-  <h4 class="card-header text-primary">Current Cats </h4>
+<div class="card card-warning marg-top" *ngIf="!isLoading">
+  <h4 class="card-header text-primary">Current Departments </h4>
   <div class="card-block">
     <table class="table table-bordered">
       <thead>
         <tr>
-         <!-- <th>序号</th>-->
-          <th>编号</th>
-          <th>姓名</th>
-          <th>班型</th>
-          <th>上班时间</th>
-          <th>下班时间</th>
-          <th>考勤情况</th>
-          <th>备注</th>
-          <th>操作</th>
+          <th width="8%">序号</th>
+          <th width="8%">编号</th>
+          <th width="10%">姓名</th>
+          <th width="10%">班型</th>
+          <th width="10%">上班时间</th>
+          <th width="10%">下班时间</th>
+          <th width="14%">考勤情况</th>
+          <th width="15%">备注</th>
+          <th width="15%">操作</th>
         </tr>
       </thead>
       <tbody *ngIf="deps.length === 0">
-      <tr>
-        <td colspan="9">There are no cats in the DB. Add a new cat below.</td>
-      </tr>
+        <tr>
+          <td colspan="9">There are no cats in the DB. Add a new cat below.</td>
+        </tr>
       </tbody>
       <tbody *ngIf="!isEditing">
       <tr *ngFor="let dep of deps; let i = index;" class="text-primary bg-warning">
-       <!-- <td>{{i}}</td>-->
+        <td>{{i+1}}</td>
         <td>{{dep._id}}</td>
         <td>{{dep.name}}</td>
-        <td>{{dep.classType}}</td>
+        <td>{{dep.workType == '1' ? '早班' : '晚班'}}</td>
         <td>{{dep.toWork}}</td>
         <td>{{dep.offWork}}</td>
         <td>{{dep.attendance}}</td>
         <td>{{dep.remark}}</td>
         <td>
-          <button class="btn btn-sm btn-danger" (click)="enableEditing(dep)"><i class="fa fa-pencil"></i> Edit</button> <button class="btn btn-sm btn-danger" (click)="deleteCat(dep)"><i class="fa fa-trash"></i> Delete</button>
+          <button class="btn btn-sm btn-success" (click)="enableEditing(dep)"><i class="fa fa-pencil"></i> Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteCat(dep)"><i class="fa fa-trash"></i> Delete</button>
         </td>
       </tr>
       </tbody>
@@ -51,7 +52,7 @@
               <input class="form-control" type="text" name="name" [(ngModel)]="dep.name" placeholder="Name" required>
             </div>
             <div class="form-group">
-              <input class="form-control" type="text" name="classType" [(ngModel)]="dep.classType" placeholder="ClassType" required>
+              <input class="form-control" type="text" name="workType" [(ngModel)]="dep.workType" placeholder="WorkType" required>
             </div>
             <div class="form-group">
               <input class="form-control" type="text" name="toWork" [(ngModel)]="dep.toWork" placeholder="ToWork" required>
@@ -76,14 +77,14 @@
 </div>
 
 <div class="card card-default" *ngIf="!isEditing">
-  <h4 class="card-header text-danger">Add a New Cat</h4>
+  <h4 class="card-header text-danger">Add a New Department </h4>
   <div class="card-block text-danger bg-success">
     <form class="form-inline" [formGroup]="addDepartmentForm" (ngSubmit)="addCat()" style="text-align:center">
       <div class="form-group">
         <input class="form-control" type="text" name="name" formControlName="name" placeholder="Name">
       </div>
       <div class="form-group">
-        <input class="form-control" type="text" name="classType" formControlName="classType" placeholder="ClassType">
+        <input class="form-control" type="text" name="workType" formControlName="workType" placeholder="WorkType">
       </div>
       <div class="form-group">
         <input class="form-control" type="text" name="toWork" formControlName="toWork" placeholder="ToWork">
@@ -97,7 +98,7 @@
       <div class="form-group">
         <input class="form-control" type="text" name="remark" formControlName="remark" placeholder="Remark">
       </div>
-      <button class="btn btn-warning" type="submit" [disabled]="!addDepartmentForm.valid"><i class="fa fa-floppy-o"></i> Add</button>
+      <button class="btn btn-primary" type="submit" [disabled]="!addDepartmentForm.valid"><i class="fa fa-floppy-o"></i> Add</button>
     </form>
   </div>
 </div>
