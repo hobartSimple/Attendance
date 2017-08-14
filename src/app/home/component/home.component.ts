@@ -14,21 +14,27 @@ import { Department } from './../model/department.model';
 })
 export class HomeComponent implements OnInit {
 
+  department: Department = new Department();
+
   deps = [];
   isLoading = true;
 
   dep = {};
   isEditing = false;
 
-  name = new FormControl('', Validators.required);
-  classType = new FormControl('', Validators.required);
-  workType = new FormControl('', Validators.required);
-  toWork = new FormControl('', Validators.required);
-  offWork = new FormControl('', Validators.required);
-  attendance = new FormControl('', Validators.required);
-  remark = new FormControl('', Validators.required);
+  departments = [
+    {name: '早班', id: '1'},
+    {name: '晚班', id: '2'}
+  ];
 
-  addDepartmentForm: FormGroup;
+  addDepartmentForm = new FormGroup ({
+    name: new FormControl('', Validators.required),
+    workType: new FormControl('', Validators.required),
+    toWork: new FormControl('', Validators.required),
+    offWork: new FormControl('', Validators.required),
+    attendance: new FormControl('', Validators.required),
+    remark: new FormControl('', Validators.required)
+  });
 
   constructor(private http: Http,
               private homeService: HomeService,
@@ -39,13 +45,12 @@ export class HomeComponent implements OnInit {
     this.getAllDeps();
 
     this.addDepartmentForm = this.formBuilder.group({
-      name: this.name,
-      classType: this.classType,
-      workType: this.workType,
-      toWork: this.toWork,
-      offWork: this.offWork,
-      attendance: this.attendance,
-      remark: this.remark
+      name: this.department.name,
+      workType: this.department.workType,
+      toWork: this.department.toWork,
+      offWork: this.department.offWork,
+      attendance: this.department.attendance,
+      remark: this.department.remark
     });
   }
 

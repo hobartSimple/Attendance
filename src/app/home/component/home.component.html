@@ -13,7 +13,7 @@
       <thead>
         <tr>
           <th width="8%">序号</th>
-          <th width="8%">编号</th>
+          <th width="8%">用户ID</th>
           <th width="10%">姓名</th>
           <th width="10%">班型</th>
           <th width="10%">上班时间</th>
@@ -25,7 +25,7 @@
       </thead>
       <tbody *ngIf="deps.length === 0">
         <tr>
-          <td colspan="9">There are no cats in the DB. Add a new cat below.</td>
+          <td colspan="9">暂无数据</td>
         </tr>
       </tbody>
       <tbody *ngIf="!isEditing">
@@ -79,26 +79,31 @@
 <div class="card card-default" *ngIf="!isEditing">
   <h4 class="card-header text-danger">Add a New Department </h4>
   <div class="card-block text-danger bg-success">
-    <form class="form-inline" [formGroup]="addDepartmentForm" (ngSubmit)="addCat()" style="text-align:center">
+    <form class="form-inline" [formGroup]="addDepartmentForm" (ngSubmit)="addDep()" style="text-align:center">
       <div class="form-group">
-        <input class="form-control" type="text" name="name" formControlName="name" placeholder="Name">
+        <input class="form-control" type="text" name="department.name" formControlName="name" placeholder="Name">
       </div>
       <div class="form-group">
-        <input class="form-control" type="text" name="workType" formControlName="workType" placeholder="WorkType">
+        <select class="form-control" formControlName="workType">
+          <option selected="selected">请选择</option>
+          <option name="department.workType" *ngFor="let dep of departments" [ngValue]="dep.id">
+            {{ dep.name }}
+          </option>
+        </select>
       </div>
       <div class="form-group">
-        <input class="form-control" type="text" name="toWork" formControlName="toWork" placeholder="ToWork">
+        <input class="form-control" type="text" name="department.toWork" formControlName="toWork" placeholder="ToWork">
       </div>
       <div class="form-group">
-        <input class="form-control" type="text" name="offWork" formControlName="offWork" placeholder="OffWork">
+        <input class="form-control" type="text" name="department.offWork" formControlName="offWork" placeholder="OffWork">
       </div>
       <div class="form-group">
-        <input class="form-control" type="text" name="attendance" formControlName="attendance" placeholder="Attendance">
+        <input class="form-control" type="text" name="department.attendance" formControlName="attendance" placeholder="Attendance">
       </div>
       <div class="form-group">
-        <input class="form-control" type="text" name="remark" formControlName="remark" placeholder="Remark">
+        <input class="form-control" type="text" name="department.remark" formControlName="remark" placeholder="Remark">
       </div>
-      <button class="btn btn-primary" type="submit" [disabled]="!addDepartmentForm.valid"><i class="fa fa-floppy-o"></i> Add</button>
+      <button class="btn btn-primary" type="submit" [disabled]="addDepartmentForm.valid"><i class="fa fa-floppy-o"></i> Add</button>
     </form>
   </div>
 </div>
