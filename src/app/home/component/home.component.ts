@@ -74,3 +74,5 @@ export class HomeComponent implements OnInit {
     );
   }
 }
+//https://ng-zorro.github.io/#/components/tabs
+//https://github.com/NG-ZORRO/ng-zorro-antd
