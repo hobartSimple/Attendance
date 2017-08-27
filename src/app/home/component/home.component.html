@@ -84,9 +84,9 @@
         <input class="form-control" type="text" name="department.name" formControlName="name" placeholder="Name">
       </div>
       <div class="form-group">
-        <select class="form-control" formControlName="workType">
+        <select class="form-control" name="department.workType" formControlName="workType">
           <option selected="selected">请选择</option>
-          <option name="department.workType" *ngFor="let dep of departments" [ngValue]="dep.id">
+          <option *ngFor="let dep of departments" [ngValue]="dep.id">
             {{ dep.name }}
           </option>
         </select>

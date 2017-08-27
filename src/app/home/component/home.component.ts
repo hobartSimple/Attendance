@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
         const newDep = res.json();
         this.deps.push(newDep);
         this.addDepartmentForm.reset();
-        this.toast.setMessage('Cat Added Successfully.', 'success');
+        this.toast.setMessage('Dep Added Successfully.', 'success');
       },
       error => console.log(error)
     );
